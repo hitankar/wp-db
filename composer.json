@@ -1,0 +1,13 @@
+{
+    "name": "optilab/wp-db",
+    "description": "DB Library to manage custom tables",
+    "type": "library",
+    "license": "GPL-3.0-or-later",
+    "authors": [
+        {
+            "name": "Hitankar Ray",
+            "email": "hitankar@gmail.com"
+        }
+    ],
+    "require": {}
+}
