@@ -10,9 +10,7 @@
         }
     ],
     "autoload": {
-        "psr-4": {
-            "Optilab\\DB\\": "app/"
-        }
+        "classmap": ["app/"]
     },
     "require": {}
 }
