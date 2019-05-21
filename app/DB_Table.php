@@ -39,6 +39,7 @@ class DB_Table
 			$sql .= "PRIMARY KEY ($primaryColumn)";
 		}
 		$sql .= ") {$this->_wpdb->get_charset_collate()}";
+
 		return $sql;
 	}
 
@@ -50,6 +51,8 @@ class DB_Table
 		$sql .= " FROM  {$this->_wpdb->prefix}{$this->_tableName}";
 		$sql .= " WHERE ";
 		foreach ($properties as $key => $value) {
+			if($value == '')
+					continue;
 			$sql .= "{$key} = '{$value}' AND ";
 		}
 		$sql = rtrim($sql, " AND " );
@@ -72,16 +75,17 @@ class DB_Table
 			} else {
 				$sql .= " WHERE ";
 				foreach ($criteria as $key => $value) {
+					if($value == '')
+					continue;
 					$sql .= "{$key} = '{$value}' {$condition} ";
 				}
 				$sql = rtrim($sql, " {$condition} " );
 			}
 		}
-		$sql .= " ORDER BY id asc";
+		$sql .= " ORDER BY id ASC";
 		if ($group_by != false) {
 			$sql .= "GROUP BY {$group_by}";
 		}
-
 		return $sql;
 	}
 
@@ -136,6 +140,8 @@ class DB_Table
 		} else {
 			$sql .= "WHERE";
 			foreach ($updatedData as $key => $value) {
+				if($value == '')
+					continue;
 				$sql .= "{$key} = {$value} {$condition} ";
 			}
 			$sql = rtrim($sql, " {$condition} " );
@@ -153,6 +159,8 @@ class DB_Table
 			$sql .= "id = {$criteria}";
 		} else {
 			foreach ($updatedData as $key => $value) {
+				if($value == '')
+					continue;
 				$sql .= "{$key} = {$value} {$condition} ";
 			}
 			$sql = rtrim($sql, " {$condition} " );
